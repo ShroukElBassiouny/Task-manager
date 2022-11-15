@@ -106,6 +106,7 @@ route.delete('/users/me',auth,async(req,res)=>{
 // Upload Avatar 
 const storage = multer.memoryStorage();
 const upload = multer({
+    dest: 'avatars',
     limits: {
         fileSize: 1000000
     },
@@ -113,16 +114,15 @@ const upload = multer({
         if(!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
             return cb(new Error('Please upload an image!'));
         }
+        
         cb(undefined, true);
     },
-    storage: storage
+    storage
 });
 
-route.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
+router.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
     const user = req.user;
-    user.avatar = req.file.buffer;
-    await user.save()
-    res.send('Picture is saved')
+    res.send({file: req.file, files: req.files})
 }, (error, req, res, next) => {
     res.status(400).send({ error: error.message })
 })
