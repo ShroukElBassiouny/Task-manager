@@ -105,7 +105,7 @@ route.delete('/users/me',auth,async(req,res)=>{
 
 // Upload Avatar 
 const storage = multer.memoryStorage()
-const upload = multer({
+const Upload = multer({
     storage: storage,
     limits: {
         fileSize: 1000000,
