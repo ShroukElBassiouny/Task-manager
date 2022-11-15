@@ -118,7 +118,7 @@ const upload = multer({
     storage: storage
 });
 
-router.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
+route.post('/users/me/avatar', auth, upload.single('avatar'), async(req, res) => {
     const user = req.user;
     user.avatar = req.file.buffer;
     await user.save()
