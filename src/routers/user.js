@@ -104,13 +104,15 @@ route.delete('/users/me',auth,async(req,res)=>{
 })
 
 // Upload Avatar 
-const Upload = multer({
-    limits:{
-        fileSize: 1000000
+const storage = multer.memoryStorage()
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1000000,
     },
     fileFilter(req , file , cb){
         if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
-            return cb(new Error('Please upload an imagges '))
+            return cb(new Error('Please upload a supported image type [jpg/jpeg/png]'))
         }
         cb(undefined , true)
     }
