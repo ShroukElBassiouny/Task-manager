@@ -5,6 +5,7 @@ const { userOneId, userOne, setupDatabase } = require('./fixtures/db')
 
 beforeEach(setupDatabase)
 
+// in test cases i use fake email so mailgun didn't work
 test('Should signup a new user', async () => {
     const response = await request(app).post('/users').send({
         name: 'shrouk',

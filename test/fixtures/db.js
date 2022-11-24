@@ -15,6 +15,7 @@ const userOne = {
 }
 
 const userTwoId = new mongoose.Types.ObjectId()
+// in test cases i use fake email so mailgun didn't work
 const userTwo = {
     _id: userTwoId,
     name: 'samers',
