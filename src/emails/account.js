@@ -14,11 +14,15 @@ const sendWelcomEmail = (email , name)=>{
    
 }
 const sendDeleteEmail = (email , name)=>{
-    mg.messages().send({
-        from: "Excited User <me@samples.mailgun.org>",
-        to: email,
-        subject:` Goodbye,${name}!`,
-        text: `Goodbye,${name}. We will miss you.`
-    })
+    try{
+        mg.messages().send({
+            from: "Excited User <me@samples.mailgun.org>",
+            to: email,
+            subject:` Goodbye,${name}!`,
+            text: `Goodbye,${name}. We will miss you.`
+        })
+    }catch(e){
+        console.log(e)
+    }
 }
 module.exports = {sendWelcomEmail , sendDeleteEmail}
