@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const User = require('../../src/models/user')
 const Task = require('../../src/models/task')
+// in test cases i use fake email so mailgun didn't work
 
 const userOneId = new mongoose.Types.ObjectId()
 const userOne = {
@@ -15,7 +16,6 @@ const userOne = {
 }
 
 const userTwoId = new mongoose.Types.ObjectId()
-// in test cases i use fake email so mailgun didn't work
 const userTwo = {
     _id: userTwoId,
     name: 'samers',
