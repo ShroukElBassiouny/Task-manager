@@ -4,13 +4,13 @@ const users = require('../models/user')
 const auth = require('../middleware/auth')
 const multer = require('multer')
 const sharp = require('sharp')
-const {sendWelcomEmail , sendDeleteEmail} = require('../emails/account')
+const {sendWelcomEmail , sendDeleteEmail} = require('../middleware/emails')
 const route = new express.Router()
 
 // Users'routes
 
 //Create user
-route.post('/users',async( req , res)=>{
+route.post('/users',sendWelcomEmail, async( req , res)=>{
     const user = new users(req.body)
     try{
         const uniqueEmail = await users.findOne({ email: req.body.email })
@@ -18,7 +18,6 @@ route.post('/users',async( req , res)=>{
             return res.send("This email already used"); 
             }
             await user.save()
-            sendWelcomEmail(user.email , user.name)
             const token = await user.generateAuthToken()
             res.status(201).send({user , token})
     }catch(e){
@@ -71,7 +70,7 @@ route.get('/users/me',auth,async(req,res)=>{
 
 
 //Update user
-route.patch('/users/me',auth,async(req,res)=>{
+route.patch('/users/me',sendWelcomEmail,auth,async(req,res)=>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
