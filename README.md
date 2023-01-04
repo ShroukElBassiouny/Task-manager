@@ -19,8 +19,8 @@ Task Manager API uses several tools to work properly:
 | `POST`    | `/users/logout` | Logout. |
 | `POST`  | `/users/logoutAll` | LogoutAll. |
 | `POST`  | `/users/me/avatar` | Upload Avatar. |
-| `GET`   | `/users/me` | Get user profile. |
-| `GET`    | `/users/:email/avatar` | Get profile picture. |
+| `GET`   | `/users/me` | Show user profile. |
+| `GET`    | `/users/:email/avatar` | Show profile picture. |
 | `PATCH`    | `/users/me` | Update user. |
 | `DELETE` | `/users/me` | Delete user. |
 | `DELETE` | `/users/me/avatar` | Delete Avatar.|
