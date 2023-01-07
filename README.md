@@ -2,7 +2,7 @@
 A NodeJS API with a remote database which is allowed users to create their accounts with encrypted passwords and tasks, see their profiles and tasks, see the specifics of a single task and upload an avatar using MongoDB.
 ## Tools 
 Task Manager API uses several tools to work properly:
-- Express.js
+- Express node.js web application framework
 - Third party: 
   - mailgun for sending mails
   - mongoose for create database models
