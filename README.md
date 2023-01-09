@@ -10,7 +10,7 @@ Task Manager API uses several tools to work properly:
 - mongoDBCompass
 - postman
 - Jest for testing
-## Endpoints:
+## Routes:
   ### Users :
 | Method   | URL                                      | Description                              |
 | -------- | ---------------------------------------- | ---------------------------------------- |
