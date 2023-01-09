@@ -70,7 +70,7 @@ route.get('/users/me',auth,async(req,res)=>{
 
 
 //Update user
-route.patch('/users/me',sendWelcomEmail,auth,async(req,res)=>{
+route.patch('/users/me',auth,sendWelcomEmail,async(req,res)=>{
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email', 'password', 'age']
     const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
